@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>introduce</title>
+
+
+<meta charset="UTF-8">
+  <title>My Profile</title>
+  <style>
+   body 
+     {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial;
+}
+
+/* 인트로 */
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: fadeOut 2s ease 2s forwards;
+}
+
+.intro img {
+  width: 200px;
+  animation: zoom 2s ease;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* 상단 */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: black;
+  padding: 15px;
+}
+
+.header img {
+  width: 100px;
+}
+
+.main {
+  padding-top: 80px;
+}
+
+/* 카드 (2x2) */
+.row {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.row-content {
+  display: grid;
+  grid-template-columns: repeat(2, 220px);
+  gap: 25px;
+}
+
+.card {
+  width: 220px;
+  height: 150px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.15);
+}
+
+.card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-weight: bold;
+}
+
+/* 🔥 모달 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #222;
+  padding: 20px;
+  width: 450px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 인트로 -->
+<div class="intro">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
+</div>
+
+<!-- 메인 -->
+<div class="main">
+
+<div class="header">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
+</div>
+
+<h2 style="text-align:center; margin-top:40px;">🎬 나의 소개</h2>
+
+<div class="row">
+  <div class="row-content">
+
+    <!-- NAME -->
+    <div class="card"
+      style="background-image:url('images/hii.png')"
+      onclick="openModal(
+        '이름',
+        '저는 임혜림입니다 😊 기획디자인을 배우고 있어요!',
+        'images/face.jpg'
+      )">
+      <div class="card-title">NAME</div>
+    </div>
+
+    <!-- SCHOOL -->
+    <div class="card"
+      style="background-image:url('images/hi.png')"
+      onclick="openModal(
+        '학교',
+        '국만대학교 도자공예과 재학 중입니다',
+        'images/cermic.jpg'
+      )">
+      <div class="card-title">SCHOOL</div>
+    </div>
+
+   <!-- HOBBIT -->
+    <div class="card"
+      style="background-image:url('images/hhi.png')"
+      onclick="openModal(
+        '취미',
+        '야구보는 것을 좋아합니다 🎮 저는 ❤️❤️❤️한화❤️❤️❤️ 팬 입니다!',
+        'images/baseball.jpg'
+
+      )">
+
+      <div class="card-title"> HOBBIT</div>
+
+    </div>
+
+   <!-- LIKE IT -->
+    <div class="card"
+     style="background-image: url('images/hhii.png');"
+     onclick="openModal(
+        '좋아하는 것',
+        '저는 친구들과 같이 사진 찍는 것을 좋아합니다!', 
+        'images/pphoto.jpg'
+        )">
+  <div class="card-title">LIKE IT</div>
+</div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- 모달 -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">✖</span>
+    <img id="modal-img">
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
+</div>
+
+<script>
+function openModal(title, text, img) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modal-title").innerText = title;
+  document.getElementById("modal-text").innerText = text;
+  document.getElementById("modal-img").src = img;
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
+
+
